@@ -6,48 +6,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projet Drag and Drop</title>
     <link rel="stylesheet" href="styles.css">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Wavefont:wght@4..1000&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
 
     <section id="s1">
-        <div class="carre draggable"></div>
-        <div class="carre2 draggable"></div>
-        <div class="carre3 draggable"></div>
+        <h1>Écris ton prénom en graffiti</h1>
+        <div class="letters">
+            <div class="letter draggable"><img src="images/A.png" alt=""></div>
+            <div class="letter draggable"><img src="images/B.png" alt=""></div>
+            <div class="letter draggable"><img src="images/C.png" alt=""></div>
+            <div class="letter draggable"><img src="images/D.png" alt=""></div>
+            <div class="letter draggable"><img src="images/E.png" alt=""></div>
+            <div class="letter draggable"><img src="images/F.png" alt=""></div>
+            <div class="letter draggable"><img src="images/G.png" alt=""></div>
+            <div class="letter draggable"><img src="images/H.png" alt=""></div>
+            <div class="letter draggable"><img src="images/I.png" alt=""></div>
+            <div class="letter draggable"><img src="images/J.png" alt=""></div>
+            <div class="letter draggable"><img src="images/K.png" alt=""></div>
+            <div class="letter draggable"><img src="images/L.png" alt=""></div>
+        </div>
+        <div class="letters">
+            <div class="letter draggable"><img src="images/M.png" alt=""></div>
+            <div class="letter draggable"><img src="images/N.png" alt=""></div>
+            <div class="letter draggable"><img src="images/O.png" alt=""></div>
+            <div class="letter draggable"><img src="images/P.png" alt=""></div>
+            <div class="letter draggable"><img src="images/Q.png" alt=""></div>
+            <div class="letter draggable"><img src="images/R.png" alt=""></div>
+            <div class="letter draggable"><img src="images/S.png" alt=""></div>
+            <div class="letter draggable"><img src="images/T.png" alt=""></div>
+            <div class="letter draggable"><img src="images/U.png" alt=""></div>
+            <div class="letter draggable"><img src="images/V.png" alt=""></div>
+            <div class="letter draggable"><img src="images/W.png" alt=""></div>
+            <div class="letter draggable"><img src="images/X.png" alt=""></div>
+            <div class="letter draggable"><img src="images/Y.png" alt=""></div>
+            <div class="letter draggable"><img src="images/Z.png" alt=""></div>
+        </div>
     </section>
 
     <section id="s2">
-
-            <div class="div1"> <img src="images/5.png" alt="" srcset=""></div>
-            <div class="div2"> <img src="images/10.png" alt="" srcset=""></div>
-            <div class="div3"> <img src="images/12.png" alt="" srcset=""></div>
-            <div class="div4"> <img src="images/9.png" alt="" srcset=""></div>
-            <div class="div5"> <img src="images/13.jpeg" alt="" srcset=""></div>
-            <div class="div6"> <img src="images/14.jpeg" alt="" srcset=""></div>
-            <div class="div7"> <img src="images/2.png" alt="" srcset=""></div>
-            <div class="div8"> <img src="images/1.png" alt="" srcset=""></div>
-            <div class="div9"> </div>
-
+        <h2>Classe tes albums par ordre de préférences <br>et profites d'un extrait en bougeant la cover</h2>
+        <div class="albums">
+            <div class="album draggable" data-audio="audios/ninho.mp3">
+                <img src="images/11.png" alt="Album 1">
+            </div>
+            <div class="album draggable" data-audio="audios/shay.mp3">
+                <img src="images/5.png" alt="Album 2">
+            </div>
+            <div class="album draggable" data-audio="audios/zed.mp3">
+                <img src="images/14.jpeg" alt="Album 3">
+            </div>
+            <div class="album draggable" data-audio="audios/werenoi.mp3">
+                <img src="images/15.jpeg" alt="Album 4">
+            </div>
+            <div class="album draggable" data-audio="audios/gims.mp3">
+                <img src="images/16.png" alt="Album 5">
+            </div>
+            <div class="album draggable" data-audio="audios/damso.mp3">
+                <img src="images/7.png" alt="Album 6">
+            </div>
+        </div>
     </section>
 
-
-
     <script src="https://unpkg.com/draggabilly@3/dist/draggabilly.pkgd.min.js"></script>
-    <script>
-        var draggableElems = document.querySelectorAll('.draggable');
-        // array of Draggabillies
-        var draggies = []
-        // init Draggabillies
-        for (var i = 0; i < draggableElems.length; i++) {
-            var draggableElem = draggableElems[i];
-            var draggie = new Draggabilly(draggableElem, {
-                // options...
-            });
-            draggies.push(draggie);
-        }
-
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
