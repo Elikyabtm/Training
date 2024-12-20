@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inspirations</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="inspirations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="inspirations-page">
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/e.png" alt="Logo" />
+                </a>
+            </div>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="inspirations.html">Inspirations</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="inspirations-main">
+        <aside class="sidebar">
+            <h2>Playlists</h2>
+            <ul id="playlist-container">
+                <li class="playlist draggable">Ma playlist 1</li>
+                <li class="playlist draggable">Ma playlist 2</li>
+                <li class="playlist draggable">Ma playlist 3</li>
+            </ul>
+        </aside>
+        <section class="content">
+            <h1>Mes Inspirations</h1>
+            <div class="artist-grid">
+                <!-- Répétez ce bloc pour chaque artiste -->
+                <div class="artist-card draggable">
+                    <img src="images/Aaryan Shah.jpeg" alt="Artiste 1">
+                    <h3>Aaryan Shah</h3>
+                </div>
+                <div class="artist-card draggable">
+                    <img src="images/Gazo.jpeg" alt="Artiste 2">
+                    <h3>Gazo</h3>
+                </div>
+                <div class="artist-card draggable">
+                    <img src="images/Isabel LaRosa.jpeg" alt="Artiste 3">
+                    <h3>Isabel LaRosa</h3>
+                </div>
+                <div class="artist-card draggable">
+                    <img src="images/Kerchak.jpeg" alt="Artiste 4">
+                    <h3>Kerchak</h3>
+                </div>
+                <div class="artist-card draggable">
+                    <img src="images/Metro Boomin.jpeg" alt="Artiste 5">
+                    <h3>Metro Boomin</h3>
+                </div>
+                <div class="artist-card draggable">
+                    <img src="images/Ninho.jpeg" alt="Artiste 6">
+                    <h3>Ninho</h3>
+                </div>
+                <div class="artist-card draggable">
+                    <img src="images/The Weekend.png" alt="Artiste 7">
+                    <h3>The Weekend</h3>
+                </div>
+                <div class="artist-card draggable">
+                    <img src="images/Tsew The Kid.jpeg" alt="Artiste 8">
+                    <h3>Tsew The Kid</h3>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="artist-popup" class="popup">
+        <div class="popup-content pokemon-card">
+            <span class="close">&times;</span>
+            <img id="artist-image" src="" alt="Artist Image">
+            <h2 id="artist-name"></h2>
+            <p id="artist-genre"></p>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/draggabilly@3/dist/draggabilly.pkgd.min.js"></script>
+    <script src="inspirations.js"></script>
+</body>
+</html>
+

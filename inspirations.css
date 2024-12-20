@@ -1,0 +1,95 @@
+.inspirations-page {
+    background-color: #121212;
+    color: #fff;
+}
+
+.inspirations-main {
+    display: flex;
+    padding-top: 80px;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #000;
+    height: calc(100vh - 80px);
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.artist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.artist-card {
+    background-color: #181818;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    transition: background-color 0.3s;
+    cursor: grab;
+}
+
+.artist-card:hover {
+    background-color: #282828;
+}
+
+.artist-card img {
+    width: 100%;
+    border-radius: 100%;
+    margin-bottom: 12px;
+}
+
+.artist-card h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.playlist {
+    background-color: #282828;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    cursor: grab;
+}
+
+.playlist:hover {
+    background-color: #333;
+}
+
+.pokemon-card {
+    background-color: #000000dc;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #1ed760;
+    padding: 20px;
+    text-align: center;
+    color: #333;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.pokemon-card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 5px solid #5e5e5e;
+}
+
+.pokemon-card h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #1ed760;
+}
+
+.pokemon-card p {
+    font-size: 18px;
+    color: #1ed760;
+}
+
