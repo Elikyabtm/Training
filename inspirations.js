@@ -1,98 +1,190 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const draggableElements = document.querySelectorAll('.draggable');
-    const artistCards = document.querySelectorAll('.artist-card');
-    const artistPopup = document.getElementById('artist-popup');
-    const closePopup = artistPopup.querySelector('.close');
-    const artistImage = document.getElementById('artist-image');
-    const artistName = document.getElementById('artist-name');
-    const artistGenre = document.getElementById('artist-genre');
 
-    draggableElements.forEach(element => {
-        new Draggabilly(element, {
-            containment: '.inspirations-main'
-        });
-    });
 
-    artistCards.forEach(card => {
-        card.addEventListener('click', () => {
-            const img = card.querySelector('img');
-            const name = card.querySelector('h3').textContent;
-            
-            artistImage.src = img.src;
-            artistName.textContent = name;
-            artistGenre.textContent = "Genre: " + getRandomGenre(); 
-            
-            artistPopup.style.display = 'block';
-        });
-    });
+const artistData = [
+  {
+    id: 1,
+    name: "Aaryan Shah",
+    image: "images/Aaryan Shah.jpeg",
+    description: "Aaryan Shah est un chanteur indo-américain de R&B alternatif aux influences sombres et atmosphériques. Son titre le plus connu est Renegade.",
+    audio: "audios/Aaryan Shah - Renegade (Lyrics) w&k.mp3",
+  },
+  {
+    id: 2,
+    name: "Burna Boy",
+    image: "images/Burna boy.jpg",
+    description: "Burna Boy est un artiste nigérian de Afrobeats, reggae et dancehall, connu pour son style fusionnant des influences africaines et internationales. Son titre le plus célèbre est Ye.",
+    audio: "audios/Burna Boy - Alone  From Black Panther Wakanda Forever.mp3",
+  },
+  {
+    id: 3,
+    name: "Isabel LaRosa",
+    image: "images/Isabel LaRosa.jpeg",
+    description: "Isabel LaRosa est une artiste américano-cubaine de dark pop et électropop. Son titre le plus connu est I'm Yours.",
+    audio: "audios/Isabel LaRosa - eyes dont lie (Audio).mp3",
+  },
+  {
+    id: 4,
+    name: "Kerchak",
+    image: "images/Kerchak.jpeg",
+    description: "Kerchak est un rappeur français d'origine ivoirienne, connu pour son style Jersey drill. Son titre le plus célèbre est Sabor.",
+    audio: "audios/Kerchak - Taimerais feat. @ZiakCC (Clip Officiel).mp3",
+  },
+  {
+    id: 5,
+    name: "Metro Boomin",
+    image: "images/Metro Boomin.jpeg",
+    description: "Metro Boomin est un producteur et rappeur américain, spécialisé dans le trap et le hip-hop. Son titre le plus connu en tant qu’artiste principal est Creepin (avec The Weeknd et 21 Savage).",
+    audio: "audios/Trance.mp3",
+  },
+  {
+    id: 6,
+    name: "Ninho",
+    image: "images/Ninho.jpeg",
+    description: "Ninho est un rappeur français d'origine congolaise, connu pour son style mêlant rap et trap. Son titre le plus célèbre est Jefe.",
+    audio: "audios/Arme de poing.mp3",
+  },
+  {
+    id: 7,
+    name: "The Weeknd",
+    image: "images/The Weekend.png",
+    description: "The Weeknd est un chanteur canadien d'origine éthiopienne, connu pour son style mêlant R&B, pop et synthwave. Son titre le plus célèbre est Blinding Lights.",
+    audio: "audios/The Weeknd - Starboy (Lyrics) ft. Daft Punk.mp3",
+  },
+  {
+    id: 8,
+    name: "Tsew The Kid",
+    image: "images/Tsew The Kid.jpeg",
+    description: "Tsew The Kid est un chanteur et rappeur français d'origine malgache, connu pour son style mêlant rap mélodique, R&B et pop urbaine. Son titre le plus célèbre est Wouna.",
+    audio: "audios/Tsew The Kid - Peur de sombrer (clip officiel).mp3",
+  },
+  {
+    id: 9,
+    name: "Sam Smith",
+    image: "images/Sam Smith.jpeg",
+    description: "Sam Smith est un chanteur britannique connu pour son style mêlant pop, soul et R&B. Son titre le plus célèbre est Stay With Me.",
+    audio: "audios/Naughty Boy - La la la ft. Sam Smith (Lyrics).mp3",
+  },
+  {
+    id: 10,
+    name: "The Neighbourhood",
+    image: "images/The Neighbourhood.jpg",
+    description: "The Neighbourhood est un groupe de rock alternatif américain, connu pour son style mêlant indie rock, R&B et dream pop. Leur titre le plus célèbre est Sweater Weather.",
+    audio: "audios/The Neighbourhood - Sweater Weather (Lyrics).mp3",
+  },
+]
 
-    closePopup.onclick = () => {
-        artistPopup.style.display = 'none';
-    };
+const artistGrid = document.getElementById("artist-grid")
+const listeningZone = document.getElementById("listening-zone")
+const popup = document.getElementById("artist-popup")
+const popupImage = document.getElementById("artist-image")
+const popupName = document.getElementById("artist-name")
+const popupDescription = document.getElementById("artist-description")
+const popupAudio = document.getElementById("artist-audio")
+const closePopup = popup.querySelector(".close")
 
-    window.onclick = (event) => {
-        if (event.target == artistPopup) {
-            artistPopup.style.display = 'none';
-        }
-    };
+function createArtistCard(artist) {
+  const card = document.createElement("div")
+  card.className = "artist-card"
+  card.innerHTML = `
+        <img src="${artist.image}" alt="${artist.name}">
+        <h3>${artist.name}</h3>
+    `
 
-    const playlists = document.querySelectorAll('.playlist');
-    playlists.forEach(playlist => {
-        playlist.addEventListener('click', () => {
-            alert(`Vous avez cliqué sur ${playlist.textContent}`);
-        });
-    });
-});
+  Draggable.create(card, {
+    type: "x,y",
+    bounds: document.body,
+    onDragStart: function () {
+      gsap.to(this.target, { scale: 1.1, boxShadow: "0 0 20px rgba(128, 128, 128, 0.5)" })
+    },
+    onDrag: function () {
+      if (this.hitTest(listeningZone, "50%")) {
+        listeningZone.classList.add("active")
+      } else {
+        listeningZone.classList.remove("active")
+      }
+    },
+    onDragEnd: function () {
+      gsap.to(this.target, { scale: 1, boxShadow: "none" })
+      if (this.hitTest(listeningZone, "50%")) {
+        showArtistPopup(artist)
+      }
+      gsap.to(this.target, { x: 0, y: 0, duration: 0.5 })
+      listeningZone.classList.remove("active")
+    },
+  })
 
-// Ajout d'une fonctionnalité de tri pour les playlists
-const playlistContainer = document.getElementById('playlist-container');
-new Sortable(playlistContainer, {
-    animation: 150,
-    ghostClass: 'playlist-ghost'
-});
-
-// Fonction pour ajouter une nouvelle playlist
-function addPlaylist(name) {
-    const newPlaylist = document.createElement('li');
-    newPlaylist.className = 'playlist draggable';
-    newPlaylist.textContent = name;
-    playlistContainer.appendChild(newPlaylist);
-    
-    new Draggabilly(newPlaylist, {
-        containment: '.inspirations-main'
-    });
-
-    newPlaylist.addEventListener('click', () => {
-        alert(`Vous avez cliqué sur ${name}`);
-    });
+  return card
 }
 
-// Bouton pour ajouter une nouvelle playlist
-const addPlaylistButton = document.createElement('button');
-addPlaylistButton.textContent = 'Ajouter une playlist';
-addPlaylistButton.addEventListener('click', () => {
-    const playlistName = prompt('Entrez le nom de la nouvelle playlist:');
-    if (playlistName) {
-        addPlaylist(playlistName);
-    }
-});
-document.querySelector('.sidebar').appendChild(addPlaylistButton);
+function showArtistPopup(artist) {
+  popupImage.src = artist.image
+  popupName.textContent = artist.name
+  popupDescription.textContent = artist.description
+  popupAudio.src = artist.audio
+  popup.style.display = "block"
 
-// Ajout d'une fonctionnalité de recherche pour les artistes
-const searchInput = document.createElement('input');
-searchInput.type = 'text';
-searchInput.placeholder = 'Rechercher un artiste';
-searchInput.addEventListener('input', (e) => {
-    const searchTerm = e.target.value.toLowerCase();
-    artistCards.forEach(card => {
-        const artistName = card.querySelector('h3').textContent.toLowerCase();
-        card.style.display = artistName.includes(searchTerm) ? 'block' : 'none';
-    });
-});
-document.querySelector('.content').insertBefore(searchInput, document.querySelector('.artist-grid'));
+  gsap.from(popup, { opacity: 0, scale: 0.8, duration: 0.3 })
+}
 
-function getRandomGenre() {
-    const genres = ['Pop', 'Rock', 'Hip-Hop', 'R&B', 'Electronic', 'Jazz', 'Classical'];
-    return genres[Math.floor(Math.random() * genres.length)];
+function animateOnScroll() {
+  const elements = document.querySelectorAll(".intro-content, .artist-card, #inspiration-quote")
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          gsap.from(entry.target, { opacity: 0, y: 50, duration: 0.5 })
+          observer.unobserve(entry.target)
+        }
+      })
+    },
+    { threshold: 0.1 },
+  )
+
+  elements.forEach((element) => {
+    observer.observe(element)
+  })
+}
+
+function animateHero() {
+  const tl = gsap.timeline()
+
+  tl.from("h1", { opacity: 0, y: 50, duration: 1 }).from(".hero-subtitle", { opacity: 0, y: 30, duration: 1 }, "-=0.5")
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  animateHero()
+  animateOnScroll()
+
+  artistData.forEach((artist) => {
+    const card = createArtistCard(artist)
+    artistGrid.appendChild(card)
+  })
+})
+
+closePopup.onclick = () => {
+  gsap.to(popup, {
+    opacity: 0,
+    scale: 0.8,
+    duration: 0.3,
+    onComplete: () => {
+      popup.style.display = "none"
+      popupAudio.pause()
+    },
+  })
+}
+
+window.onclick = (event) => {
+  if (event.target == popup) {
+    gsap.to(popup, {
+      opacity: 0,
+      scale: 0.8,
+      duration: 0.3,
+      onComplete: () => {
+        popup.style.display = "none"
+        popupAudio.pause()
+      },
+    })
+  }
 }
 

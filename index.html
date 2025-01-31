@@ -3,72 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ELKPRODZ</title>
+    <title>ELKPRODZ - Beatmaker</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">
-                <a href="index.html">
-                    <img src="images/e.png" alt="Logo" />
-                </a>
-            </div>
+    <nav class="floating-nav">
+        <div class="nav-content">
+            <a href="#" class="logo">ELKPRODZ</a>
             <ul>
-                <li><a href="index.html">Accueil</a></li>
+                <li><a href="#beats">Beats</a></li>
                 <li><a href="inspirations.html">Inspirations</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
-        </nav>
-    </header>
-    
+        </div>
+    </nav>
 
     <main>
-        <section id="album-section">
-            <h1>Découvre mes prods en les bougeant pour écouter et en cliquant dessus pour en savoir plus</h1>
-            <div id="album-container">
-                <div class="album draggable" data-audio="audios/ANXIOUS.mp3">
-                    <img src="images/ANXIOUS.png" alt="Album 1">
+        <section id="hero">
+            <h1>Découvre l'univers sonore d'ELKPRODZ</h1>
+            <p class="hero-subtitle">Plongez dans un monde de rythmes et de mélodies uniques</p>
+            <div class="cta-container">
+                <a href="#beats" class="cta-button">Explorer les Beats</a>
+                <a href="#about" class="cta-button secondary">En savoir plus</a>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="about-content">
+                <h2>À propos d'ELKPRODZ</h2>
+                <p>Beatmakeur amatrice, je crée des beats pour libérer mes émotions qui mêlent influences modernes et sonorités du monde entier. Mon objectif : Retranscrire mes émotions en musique.</p>
+            </div>
+        </section>
+
+        <section id="beats">
+            <h2>Mes Dernières Créations</h2>
+            <p>Fais glisser les vinyles pour écouter, clique pour en savoir plus</p>
+            <div id="vinyl-container"></div>
+        </section>
+
+        <section id="services">
+            <h2>Mes Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Production de Beats</h3>
+                    <p>Créations sur mesure pour vos projets</p>
                 </div>
-                <div class="album draggable" data-audio="audios/Frustrated.mp3">
-                    <img src="images/Frustrated.png" alt="Album 2">
+                <div class="service-card">
+                    <h3>Mixage & Mastering</h3>
+                    <p>Finalisez vos morceaux avec une qualité pro</p>
                 </div>
-                <div class="album draggable" data-audio="audios/Horizon.mp3">
-                    <img src="images/Horizon.png" alt="Album 3">
-                </div>
-                <div class="album draggable" data-audio="audios/Look Around.mp3">
-                    <img src="images/Look around.png" alt="Album 4">
-                </div>
-                <div class="album draggable" data-audio="audios/Lost.mp3">
-                    <img src="images/Lost.png" alt="Album 5">
-                </div>
-                <div class="album draggable" data-audio="audios/Missing You.mp3">
-                    <img src="images/Missing you.png" alt="Album 6">
-                </div>
-                <div class="album draggable" data-audio="audios/The End.mp3">
-                    <img src="images/The End.png" alt="Album 7">
-                </div>
-                <div class="album draggable" data-audio="audios/Not Righ.mp3">
-                    <img src="images/Not right.png" alt="Album 8">
-                </div>
-                <div class="album draggable" data-audio="audios/Space Drill.mp3">
-                    <img src="images/Space drill.png" alt="Album 9">
+                <div class="service-card">
+                    <h3>Collaboration</h3>
+                    <p>Travaillons ensemble sur votre prochain hit</p>
                 </div>
             </div>
         </section>
     </main>
 
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 ELKPRODZ. Tous droits réservés.</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/elk_prodz/" target="_blank">Instagram</a>
+                <a href="https://soundcloud.com/elkprodz" target="_blank">SoundCloud</a>
+                <a href="https://www.youtube.com/@ELKPRODZ" target="_blank">YouTube</a>
+            </div>
+        </div>
+    </footer>
+
     <div id="popup" class="popup">
         <div class="popup-content">
             <span class="close">&times;</span>
             <h2 id="popup-title"></h2>
+            <div class="turntable">
+                <div class="platter">
+                    <div class="vinyl" id="popup-vinyl"></div>
+                </div>
+                <div class="tonearm"></div>
+            </div>
             <audio id="popup-audio" controls></audio>
             <p id="popup-description"></p>
         </div>
     </div>
 
-    <script src="https://unpkg.com/draggabilly@3/dist/draggabilly.pkgd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/Draggable.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

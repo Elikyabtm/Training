@@ -3,86 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inspirations</title>
+    <title>ELKPRODZ - Inspirations</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="inspirations.css">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body class="inspirations-page">
-    <header>
-        <nav>
-            <div class="logo">
-                <a href="index.html">
-                    <img src="images/e.png" alt="Logo" />
-                </a>
-            </div>
+    <nav class="floating-nav">
+        <div class="nav-content">
+            <a href="index.html" class="logo">ELKPRODZ</a>
             <ul>
-                <li><a href="index.html">Accueil</a></li>
+                <li><a href="index.html#beats">Beats</a></li>
                 <li><a href="inspirations.html">Inspirations</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
-    <main class="inspirations-main">
-        <aside class="sidebar">
-            <h2>Playlists</h2>
-            <ul id="playlist-container">
-                <li class="playlist draggable">Ma playlist 1</li>
-                <li class="playlist draggable">Ma playlist 2</li>
-                <li class="playlist draggable">Ma playlist 3</li>
-            </ul>
-        </aside>
-        <section class="content">
+    <main>
+        <section id="hero">
             <h1>Mes Inspirations</h1>
-            <div class="artist-grid">
-                <!-- Répétez ce bloc pour chaque artiste -->
-                <div class="artist-card draggable">
-                    <img src="images/Aaryan Shah.jpeg" alt="Artiste 1">
-                    <h3>Aaryan Shah</h3>
-                </div>
-                <div class="artist-card draggable">
-                    <img src="images/Gazo.jpeg" alt="Artiste 2">
-                    <h3>Gazo</h3>
-                </div>
-                <div class="artist-card draggable">
-                    <img src="images/Isabel LaRosa.jpeg" alt="Artiste 3">
-                    <h3>Isabel LaRosa</h3>
-                </div>
-                <div class="artist-card draggable">
-                    <img src="images/Kerchak.jpeg" alt="Artiste 4">
-                    <h3>Kerchak</h3>
-                </div>
-                <div class="artist-card draggable">
-                    <img src="images/Metro Boomin.jpeg" alt="Artiste 5">
-                    <h3>Metro Boomin</h3>
-                </div>
-                <div class="artist-card draggable">
-                    <img src="images/Ninho.jpeg" alt="Artiste 6">
-                    <h3>Ninho</h3>
-                </div>
-                <div class="artist-card draggable">
-                    <img src="images/The Weekend.png" alt="Artiste 7">
-                    <h3>The Weekend</h3>
-                </div>
-                <div class="artist-card draggable">
-                    <img src="images/Tsew The Kid.jpeg" alt="Artiste 8">
-                    <h3>Tsew The Kid</h3>
+            <p class="hero-subtitle">Découvrez les artistes qui façonnent mon univers musical</p>
+        </section>
+
+        <section id="inspiration-intro">
+            <div class="intro-content">
+                <h2>L'Art de s'Inspirer</h2>
+                <p>Chaque artiste est un mélange unique d'influences. Explorez les miennes et comprenez comment elles se reflètent dans ma musique. Faites glisser les artistes dans la zone d'écoute pour découvrir leur influence sur mes créations.</p>
+            </div>
+        </section>
+        
+        <section id="inspiration-interactive">
+            <div class="inspiration-container">
+                <div id="artist-grid" class="artist-grid"></div>
+                <div id="listening-zone" class="listening-zone">
+                    <h2>Zone d'écoute</h2>
+                    <p>Déposez un artiste ici</p>
                 </div>
             </div>
         </section>
+
+        <section id="inspiration-quote">
+            <blockquote>
+                "La musique est l'art suprême de l'inspiration. Elle donne vie à nos émotions les plus profondes."
+            </blockquote>
+            <cite>- ELKPRODZ</cite>
+        </section>
     </main>
 
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 ELKPRODZ. Tous droits réservés.</p>
+            <div class="social-links">
+                <a href="#" target="_blank">Instagram</a>
+                <a href="#" target="_blank">SoundCloud</a>
+                <a href="#" target="_blank">YouTube</a>
+            </div>
+        </div>
+    </footer>
+
     <div id="artist-popup" class="popup">
-        <div class="popup-content pokemon-card">
+        <div class="popup-content">
             <span class="close">&times;</span>
-            <img id="artist-image" src="" alt="Artist Image">
+            <img id="artist-image" src="/placeholder.svg" alt="Artist Image">
             <h2 id="artist-name"></h2>
-            <p id="artist-genre"></p>
+            <p id="artist-description"></p>
+            <audio id="artist-audio" controls></audio>
         </div>
     </div>
 
-    <script src="https://unpkg.com/draggabilly@3/dist/draggabilly.pkgd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/Draggable.min.js"></script>
     <script src="inspirations.js"></script>
 </body>
 </html>
