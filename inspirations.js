@@ -1,5 +1,3 @@
-
-
 const artistData = [
   {
     id: 1,
@@ -82,6 +80,8 @@ const popupDescription = document.getElementById("artist-description")
 const popupAudio = document.getElementById("artist-audio")
 const closePopup = popup.querySelector(".close")
 
+
+
 function createArtistCard(artist) {
   const card = document.createElement("div")
   card.className = "artist-card"
@@ -94,7 +94,7 @@ function createArtistCard(artist) {
     type: "x,y",
     bounds: document.body,
     onDragStart: function () {
-      gsap.to(this.target, { scale: 1.1, boxShadow: "0 0 20px rgba(128, 128, 128, 0.5)" })
+      gsap.to(this.target, { scale: 1.1, boxShadow: "0 0 20px rgb(255, 255, 255)" })
     },
     onDrag: function () {
       if (this.hitTest(listeningZone, "50%")) {
@@ -122,69 +122,22 @@ function showArtistPopup(artist) {
   popupDescription.textContent = artist.description
   popupAudio.src = artist.audio
   popup.style.display = "block"
-
-  gsap.from(popup, { opacity: 0, scale: 0.8, duration: 0.3 })
 }
 
-function animateOnScroll() {
-  const elements = document.querySelectorAll(".intro-content, .artist-card, #inspiration-quote")
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          gsap.from(entry.target, { opacity: 0, y: 50, duration: 0.5 })
-          observer.unobserve(entry.target)
-        }
-      })
-    },
-    { threshold: 0.1 },
-  )
-
-  elements.forEach((element) => {
-    observer.observe(element)
-  })
-}
-
-function animateHero() {
-  const tl = gsap.timeline()
-
-  tl.from("h1", { opacity: 0, y: 50, duration: 1 }).from(".hero-subtitle", { opacity: 0, y: 30, duration: 1 }, "-=0.5")
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  animateHero()
-  animateOnScroll()
-
-  artistData.forEach((artist) => {
-    const card = createArtistCard(artist)
-    artistGrid.appendChild(card)
-  })
+artistData.forEach((artist) => {
+  const card = createArtistCard(artist)
+  artistGrid.appendChild(card)
 })
 
 closePopup.onclick = () => {
-  gsap.to(popup, {
-    opacity: 0,
-    scale: 0.8,
-    duration: 0.3,
-    onComplete: () => {
-      popup.style.display = "none"
-      popupAudio.pause()
-    },
-  })
+  popup.style.display = "none"
+  popupAudio.pause()
 }
 
 window.onclick = (event) => {
   if (event.target == popup) {
-    gsap.to(popup, {
-      opacity: 0,
-      scale: 0.8,
-      duration: 0.3,
-      onComplete: () => {
-        popup.style.display = "none"
-        popupAudio.pause()
-      },
-    })
+    popup.style.display = "none"
+    popupAudio.pause()
   }
 }
 
